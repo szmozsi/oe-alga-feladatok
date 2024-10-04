@@ -29,9 +29,9 @@ namespace OE.ALGA.Adatszerkezetek
 
         public T Felso()
         {
-            if (Ures) // Ellenőrizd, hogy a verem üres-e
+            if (Ures)
             {
-                throw new NincsElemKivetel(); // Ha üres, dobj kivételt
+                throw new NincsElemKivetel();
             }
             return tömb[n - 1];
         }
@@ -202,7 +202,7 @@ namespace OE.ALGA.Adatszerkezetek
         {
             for (int i = 0; i < n; i++)
             {
-                yield return lista[i]; // Használj lista[i]-t
+                yield return lista[i];
             }
         }
 
