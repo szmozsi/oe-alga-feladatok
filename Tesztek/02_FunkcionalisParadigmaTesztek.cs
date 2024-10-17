@@ -4,7 +4,7 @@
 //namespace oe.alga.tesztek
 //{
 //    [testclass()]
-//    public class feltetelesfeladattarolotesztek
+//    public class Feltetelesfeladattarolotesztek
 //    {
 //        [testmethod()]
 //        public void felveszteszt() //f1.(a)

@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ALGAme\ALGAme.csproj" />
     <ProjectReference Include="..\ALGA\ALGA.csproj" />
   </ItemGroup>
 

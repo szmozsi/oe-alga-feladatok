@@ -6,12 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OE.ALGA.Paradigma
+namespace OE.ALGA.Paradigmaks
 {
+
+    public class TaroloMegteltKivetel : Exception
+    {
+        public TaroloMegteltKivetel() : base("A tároló megtelt!") { }
+    }
     public interface IVegrehajthato
     {
         void Vegrehajtas();
     }
+
+    
 
     public class FeladatTarolo<T> : IEnumerable<T> where T : IVegrehajthato
     {
@@ -33,7 +40,7 @@ namespace OE.ALGA.Paradigma
             }
             else
             {
-                throw new InvalidOperationException("A tároló megtelt!");
+                throw new TaroloMegteltKivetel();
             }
         }
 
