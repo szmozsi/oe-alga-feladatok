@@ -1,136 +1,136 @@
-//using microsoft.visualstudio.testtools.unittesting;
-//using oe.alga.paradigmak;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OE.ALGA.Paradigmak;
 
-//namespace oe.alga.tesztek
-//{
-//    [testclass()]
-//    public class Feltetelesfeladattarolotesztek
-//    {
-//        [testmethod()]
-//        public void felveszteszt() //f1.(a)
-//        {
-//            feltetelesfeladattarolo<tesztfeladat> tarolo = new feltetelesfeladattarolo<tesztfeladat>(10);
-//            tesztfeladat a = new tesztfeladat("a");
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//        }
+namespace OE.ALGA.Tesztek
+{
+    [TestClass()]
+    public class FeltetelesFeladatTaroloTeszt
+    {
+        [TestMethod()]
+        public void FelveszTeszt() //f1.(a)
+        {
+            FeltetelesFeladatTarolo<TesztFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFeladat>(10);
+            TesztFeladat a = new TesztFeladat("a");
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+        }
 
-//        [testmethod()]
-//        [expectedexception(typeof(tarolomegteltkivetel))]
-//        public void tulsokatfelveszteszt() //f1.(a)
-//        {
-//            feltetelesfeladattarolo<tesztfeladat> tarolo = new feltetelesfeladattarolo<tesztfeladat>(5);
-//            tesztfeladat a = new tesztfeladat("a");
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(a);
-//        }
+        [TestMethod()]
+        [ExpectedException(typeof(TaroloMegteltKivetel))]
+        public void TulsokatFelveszTeszt() //f1.(a)
+        {
+            FeltetelesFeladatTarolo<TesztFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFeladat>(5);
+            TesztFeladat a = new TesztFeladat("a");
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(a);
+        }
 
-//        [testmethod()]
-//        public void mindenvegrehajtasteszt() //f1.(a)
-//        {
-//            feltetelesfeladattarolo<tesztfeladat> tarolo = new feltetelesfeladattarolo<tesztfeladat>(10);
-//            tesztfeladat a = new tesztfeladat("a");
-//            tesztfeladat b = new tesztfeladat("b");
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(b);
-//            assert.isfalse(a.vegrehajtott);
-//            assert.isfalse(b.vegrehajtott);
-//            tarolo.mindentvegrehajt();
-//            assert.istrue(a.vegrehajtott);
-//            assert.istrue(b.vegrehajtott);
-//        }
+        [TestMethod()]
+        public void MindentVegrehajtTeszt() //f1.(a)
+        {
+            FeltetelesFeladatTarolo<TesztFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFeladat>(10);
+            TesztFeladat a = new TesztFeladat("a");
+            TesztFeladat b = new TesztFeladat("b");
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(b);
+            Assert.IsFalse(a.Vegrehajtott);
+            Assert.IsFalse(b.Vegrehajtott);
+            tarolo.MindentVegrehajt();
+            Assert.IsTrue(a.Vegrehajtott);
+            Assert.IsTrue(b.Vegrehajtott);
+        }
 
-//        [testmethod()]
-//        public void bejaroteszt() //f1.(a)
-//        {
-//            feltetelesfeladattarolo<tesztfeladat> tarolo = new feltetelesfeladattarolo<tesztfeladat>(10);
-//            tesztfeladat a = new tesztfeladat("a");
-//            tesztfeladat b = new tesztfeladat("b");
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(b);
-//            string nevek = "";
-//            foreach (tesztfeladat u in tarolo)
-//            {
-//                nevek += u.azonosito;
-//            }
-//            assert.areequal("ab", nevek);
-//        }
+        [TestMethod()]
+        public void BejaroTeszt() //f1.(a)
+        {
+            FeltetelesFeladatTarolo<TesztFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFeladat>(10);
+            TesztFeladat a = new TesztFeladat("a");
+            TesztFeladat b = new TesztFeladat("b");
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(b);
+            string nevek = "";
+            foreach (TesztFeladat u in tarolo)
+            {
+                nevek += u.Azonosito;
+            }
+            Assert.AreEqual("ab", nevek);
+        }
 
-//        [testmethod()]
-//        public void feltetelesvegrehajtasteszt() //f1.(b)
-//        {
-//            feltetelesfeladattarolo<tesztfeladat> tarolo = new feltetelesfeladattarolo<tesztfeladat>(10);
-//            tesztfeladat a1 = new tesztfeladat("a1");
-//            tesztfeladat b1 = new tesztfeladat("b1");
-//            tesztfeladat a2 = new tesztfeladat("a2");
-//            tarolo.felvesz(a1);
-//            tarolo.felvesz(b1);
-//            tarolo.felvesz(a2);
-//            assert.isfalse(a1.vegrehajtott);
-//            assert.isfalse(b1.vegrehajtott);
-//            assert.isfalse(a2.vegrehajtott);
-//            tarolo.feltetelesvegrehajtas(x => x.azonosito[0] == 'a'); // csak 'a' kezdetűek végrehajtása
-//            assert.istrue(a1.vegrehajtott);
-//            assert.isfalse(b1.vegrehajtott);
-//            assert.istrue(a2.vegrehajtott);
-//            tarolo.feltetelesvegrehajtas(x => x.azonosito[0] == 'b'); // csak 'b' kezdetűek végrehajtása
-//            assert.istrue(a1.vegrehajtott);
-//            assert.istrue(b1.vegrehajtott);
-//            assert.istrue(a2.vegrehajtott);
-//        }
+        [TestMethod()]
+        public void FeltetelesVegrehajtasTeszt() //f1.(b)
+        {
+            FeltetelesFeladatTarolo<TesztFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFeladat>(10);
+            TesztFeladat a1 = new TesztFeladat("a1");
+            TesztFeladat b1 = new TesztFeladat("b1");
+            TesztFeladat a2 = new TesztFeladat("a2");
+            tarolo.Felvesz(a1);
+            tarolo.Felvesz(b1);
+            tarolo.Felvesz(a2);
+            Assert.IsFalse(a1.Vegrehajtott);
+            Assert.IsFalse(b1.Vegrehajtott);
+            Assert.IsFalse(a2.Vegrehajtott);
+            tarolo.FeltetelesVegrehajtas(x => x.Azonosito[0] == 'a'); // csak 'a' kezdetűek végrehajtása
+            Assert.IsTrue(a1.Vegrehajtott);
+            Assert.IsFalse(b1.Vegrehajtott);
+            Assert.IsTrue(a2.Vegrehajtott);
+            tarolo.FeltetelesVegrehajtas(x => x.Azonosito[0] == 'b'); // csak 'b' kezdetűek végrehajtása
+            Assert.IsTrue(a1.Vegrehajtott);
+            Assert.IsTrue(b1.Vegrehajtott);
+            Assert.IsTrue(a2.Vegrehajtott);
+        }
 
-//        [testmethod()]
-//        public void feltetelesfuggosegesvegrehajtasteszt() //f1.(b)
-//        {
-//            feltetelesfeladattarolo<tesztfuggofeladat> tarolo = new feltetelesfeladattarolo<tesztfuggofeladat>(10);
-//            tesztfuggofeladat a1 = new tesztfuggofeladat("a1") { vegrehajthato = true };
-//            tesztfuggofeladat b1 = new tesztfuggofeladat("b1") { vegrehajthato = true };
-//            tesztfuggofeladat a2 = new tesztfuggofeladat("a2") { vegrehajthato = false };
-//            tarolo.felvesz(a1);
-//            tarolo.felvesz(b1);
-//            tarolo.felvesz(a2);
-//            assert.isfalse(a1.vegrehajtott);
-//            assert.isfalse(b1.vegrehajtott);
-//            assert.isfalse(a2.vegrehajtott);
-//            tarolo.feltetelesvegrehajtas(x => x.azonosito[0] == 'a' && x.fuggosegteljesul); // csak 'a' kezdetű és végrehajtható
-//            assert.istrue(a1.vegrehajtott);
-//            assert.isfalse(b1.vegrehajtott);
-//            assert.isfalse(a2.vegrehajtott);
-//            tarolo.feltetelesvegrehajtas(x => x.azonosito[0] == 'b' && x.fuggosegteljesul); // csak 'b' kezdetű és végrehajtható
-//            assert.istrue(a1.vegrehajtott);
-//            assert.istrue(b1.vegrehajtott);
-//            assert.isfalse(a2.vegrehajtott);
-//            a2.vegrehajthato = true;
-//            tarolo.feltetelesvegrehajtas(x => x.azonosito[0] == 'a' && x.fuggosegteljesul); // csak 'a' kezdetű és végrehajtható
-//            assert.istrue(a1.vegrehajtott);
-//            assert.istrue(b1.vegrehajtott);
-//            assert.istrue(a2.vegrehajtott);
-//        }
+        [TestMethod()]
+        public void FeltetelesFuggosegesVegrehajtasTeszt() //f1.(b)
+        {
+            FeltetelesFeladatTarolo<TesztFuggoFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFuggoFeladat>(10);
+            TesztFuggoFeladat a1 = new TesztFuggoFeladat("a1") { Vegrehajthato = true };
+            TesztFuggoFeladat b1 = new TesztFuggoFeladat("b1") { Vegrehajthato = true };
+            TesztFuggoFeladat a2 = new TesztFuggoFeladat("a2") { Vegrehajthato = false };
+            tarolo.Felvesz(a1);
+            tarolo.Felvesz(b1);
+            tarolo.Felvesz(a2);
+            Assert.IsFalse(a1.Vegrehajtott);
+            Assert.IsFalse(b1.Vegrehajtott);
+            Assert.IsFalse(a2.Vegrehajtott);
+            tarolo.FeltetelesVegrehajtas(x => x.Azonosito[0] == 'a' && x.FuggosegTeljesul); // csak 'a' kezdetű és végrehajtható
+            Assert.IsTrue(a1.Vegrehajtott);
+            Assert.IsFalse(b1.Vegrehajtott);
+            Assert.IsFalse(a2.Vegrehajtott);
+            tarolo.FeltetelesVegrehajtas(x => x.Azonosito[0] == 'b' && x.FuggosegTeljesul); // csak 'b' kezdetű és végrehajtható
+            Assert.IsTrue(a1.Vegrehajtott);
+            Assert.IsTrue(b1.Vegrehajtott);
+            Assert.IsFalse(a2.Vegrehajtott);
+            a2.Vegrehajthato = true;
+            tarolo.FeltetelesVegrehajtas(x => x.Azonosito[0] == 'a' && x.FuggosegTeljesul); // csak 'a' kezdetű és végrehajtható
+            Assert.IsTrue(a1.Vegrehajtott);
+            Assert.IsTrue(b1.Vegrehajtott);
+            Assert.IsTrue(a2.Vegrehajtott);
+        }
 
-//        [testmethod()]
-//        public void feltetelesbejaroteszt() //f3.(b)
-//        {
-//            feltetelesfeladattarolo<tesztfuggofeladat> tarolo = new feltetelesfeladattarolo<tesztfuggofeladat>(10);
-//            tarolo.bejarofeltetel = (x => x.fuggosegteljesul);
-//            tesztfuggofeladat a = new tesztfuggofeladat("a") { vegrehajthato = true };
-//            tesztfuggofeladat b = new tesztfuggofeladat("b") { vegrehajthato = false };
-//            tesztfuggofeladat c = new tesztfuggofeladat("c") { vegrehajthato = true };
-//            tarolo.felvesz(a);
-//            tarolo.felvesz(b);
-//            tarolo.felvesz(c);
-//            string nevek = "";
-//            foreach (tesztfeladat u in tarolo)
-//            {
-//                nevek += u.azonosito;
-//            }
-//            assert.areequal("ac", nevek);
-//        }
-//    }
-//}
+        [TestMethod()]
+        public void FeltetelesBejaroTeszt() //f3.(b)
+        {
+            FeltetelesFeladatTarolo<TesztFuggoFeladat> tarolo = new FeltetelesFeladatTarolo<TesztFuggoFeladat>(10);
+            tarolo.BejaroFeltetel = (x => x.FuggosegTeljesul);
+            TesztFuggoFeladat a = new TesztFuggoFeladat("a") { Vegrehajthato = true };
+            TesztFuggoFeladat b = new TesztFuggoFeladat("b") { Vegrehajthato = false };
+            TesztFuggoFeladat c = new TesztFuggoFeladat("c") { Vegrehajthato = true };
+            tarolo.Felvesz(a);
+            tarolo.Felvesz(b);
+            tarolo.Felvesz(c);
+            string nevek = "";
+            foreach (TesztFeladat u in tarolo)
+            {
+                nevek += u.Azonosito;
+            }
+            Assert.AreEqual("ac", nevek);
+        }
+    }
+}
