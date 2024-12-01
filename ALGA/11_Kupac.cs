@@ -16,9 +16,9 @@ namespace OE.ALGA.Adatszerkezetek
             KupacotEpit();
         }
 
-        public static int Bal(int i) => 2 * i;
-        public static int Jobb(int i) => 2 * i + 1;
-        public static int Szulo(int i) => i / 2;
+        public static int Bal(int i) => 2 * i + 1;
+        public static int Jobb(int i) => 2 * i + 2;
+        public static int Szulo(int i) => (i - 1) / 2; 
 
         protected void Kupacol(int i)
         {
@@ -26,22 +26,22 @@ namespace OE.ALGA.Adatszerkezetek
             int jobb = Jobb(i);
             int legjobb = i;
 
-            if (bal <= n && nagyobbPrioritás(E[bal - 1], E[legjobb - 1]))
+            if (bal < n && nagyobbPrioritás(E[bal], E[legjobb]))
                 legjobb = bal;
 
-            if (jobb <= n && nagyobbPrioritás(E[jobb - 1], E[legjobb - 1]))
+            if (jobb < n && nagyobbPrioritás(E[jobb], E[legjobb]))
                 legjobb = jobb;
 
             if (legjobb != i)
             {
-                (E[i - 1], E[legjobb - 1]) = (E[legjobb - 1], E[i - 1]);
+                (E[i], E[legjobb]) = (E[legjobb], E[i]);
                 Kupacol(legjobb);
             }
         }
 
         protected void KupacotEpit()
         {
-            for (int i = n / 2; i > 0; i--)
+            for (int i = n / 2 - 1; i >= 0; i--)
                 Kupacol(i);
         }
     }
@@ -80,7 +80,7 @@ namespace OE.ALGA.Adatszerkezetek
         public void Sorba(T ertek)
         {
             if (n >= E.Length)
-                throw new InvalidOperationException("NincsHelyKivetel");
+                throw new NincsHelyKivetel();
 
             E[n] = ertek;
             n++;
@@ -90,7 +90,7 @@ namespace OE.ALGA.Adatszerkezetek
         public T Sorbol()
         {
             if (Ures)
-                throw new InvalidOperationException("NincsElemKivetel");
+                throw new NincsElemKivetel();
 
             T legjobb = E[0];
             E[0] = E[n - 1];
@@ -103,7 +103,7 @@ namespace OE.ALGA.Adatszerkezetek
         public T Elso()
         {
             if (Ures)
-                throw new InvalidOperationException("NincsElemKivetel");
+                throw new NincsElemKivetel();
 
             return E[0];
         }
