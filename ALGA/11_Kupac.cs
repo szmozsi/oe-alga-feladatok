@@ -18,7 +18,7 @@ namespace OE.ALGA.Adatszerkezetek
 
         public static int Bal(int i) => 2 * i + 1;
         public static int Jobb(int i) => 2 * i + 2;
-        public static int Szulo(int i) => (i - 1) / 2; 
+        public static int Szulo(int i) => (i - 1) / 2;
 
         protected void Kupacol(int i)
         {
@@ -56,7 +56,7 @@ namespace OE.ALGA.Adatszerkezetek
             {
                 (E[0], E[i - 1]) = (E[i - 1], E[0]);
                 n--;
-                Kupacol(1);
+                Kupacol(0);
             }
         }
     }
@@ -68,9 +68,9 @@ namespace OE.ALGA.Adatszerkezetek
 
         private void KulcsotFelvisz(int i)
         {
-            while (i > 1 && nagyobbPrioritás(E[i - 1], E[Szulo(i) - 1]))
+            while (i > 0 && nagyobbPrioritás(E[i], E[Szulo(i)]))
             {
-                (E[i - 1], E[Szulo(i) - 1]) = (E[Szulo(i) - 1], E[i - 1]);
+                (E[i], E[Szulo(i)]) = (E[Szulo(i)], E[i]);
                 i = Szulo(i);
             }
         }
@@ -84,7 +84,7 @@ namespace OE.ALGA.Adatszerkezetek
 
             E[n] = ertek;
             n++;
-            KulcsotFelvisz(n);
+            KulcsotFelvisz(n - 1);
         }
 
         public T Sorbol()
@@ -95,7 +95,7 @@ namespace OE.ALGA.Adatszerkezetek
             T legjobb = E[0];
             E[0] = E[n - 1];
             n--;
-            Kupacol(1);
+            Kupacol(0);
 
             return legjobb;
         }
@@ -112,10 +112,10 @@ namespace OE.ALGA.Adatszerkezetek
         {
             int index = Array.IndexOf(E, elem, 0, n);
             if (index == -1)
-                throw new InvalidOperationException("NincsElemKivetel");
+                throw new NincsElemKivetel();
 
-            KulcsotFelvisz(index + 1);
-            Kupacol(index + 1);
+            KulcsotFelvisz(index);
+            Kupacol(index);
         }
     }
 }
